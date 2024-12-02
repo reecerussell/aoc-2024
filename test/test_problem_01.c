@@ -62,13 +62,15 @@ int main()
         // Free allocated memory
         free(col1);
         free(col2);
+
+        assert(distance == 1222801);
+
+        return 0;
     }
     else
     {
         printf("Failed to read the file.\n");
+
+        return 1;
     }
-
-    // assert(distance == 11);
-
-    return 0;
 }
