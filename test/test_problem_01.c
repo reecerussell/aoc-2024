@@ -1,9 +1,10 @@
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "../src/problem_01.h"
 
-int read_file(int **col1, int **col2, int *size)
+static int read_file(int **col1, int **col2, int *size)
 {
     FILE *file = fopen("inputs/01.txt", "r");
     if (!file)
@@ -55,15 +56,20 @@ int main()
 
     if (read_file(&col1, &col2, &size) == 0)
     {
-        int distance = reconcile(col1, col2, size);
+        int distance = calc_distance(col1, col2, size);
 
         printf("Distance: %d\n", distance);
+
+        assert(distance == 1222801);
+
+        int sim_score = calc_similarity(col1, col2, size);
+        printf("Similarity score: %d\n", sim_score);
+
+        assert(sim_score == 22545250);
 
         // Free allocated memory
         free(col1);
         free(col2);
-
-        assert(distance == 1222801);
 
         return 0;
     }
